@@ -9,8 +9,8 @@ def main():
     print("2. Vickrey Auction")
     print("3. Penny Auction")
 
-    selection = input("press 1, 2 or 3 to select your auction type")
-
+    selection = int(input("press 1, 2 or 3 to select your auction type\n"))
+    print("you have selected", selection)
     if selection == 1:
         dutch_auction()
     if selection == 2:
@@ -22,3 +22,4 @@ def main():
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
+    main()
