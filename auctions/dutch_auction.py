@@ -9,10 +9,6 @@ price. So for this auction we
 """
 
 
-# have there be an option to have 1 to 4 players and randomly assign them some starting
-# chash. At the end of each round the cash of each player should be printed.
-## each item, before bidding begins has 3 appraisors who estimate the "true" value of an item
-# they are off by unknown amounts, but each item does have a "true value" in that range 
 def get_item(total_winnings):
     options = [x for x in ["watch", "book", "chair"] if x not in total_winnings]
     return random.choice(options) if len(options) > 0 else False
