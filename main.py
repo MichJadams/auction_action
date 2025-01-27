@@ -2,25 +2,44 @@ from auctions.dutch_auction import dutch_auction
 from auctions.penny_auction import penny_auction
 from auctions.vickrey_auction import vickrey_auction
 
+
+def initilize_players():
+    number_of_players = int(input("How many players would like to submid a bid?\n"))
+    players = []
+    for player in range(number_of_players):
+        print("---------------------------------------------------")
+        name = input(f"Player {player}, please input your name.\n")
+        starting_cash = 10
+        players.append({"name": name,
+                              "starting_cash": starting_cash,
+                              "current_cash": starting_cash,
+                              "items": []})
+        print(f"Welcome {name}! You have randomly been assigned a starting cash of {starting_cash}.")
+    return players
 def main():
-    print("Select which action you are interested in:")
-    print("1. Dutch Auction")
-    print("2. Vickrey Auction")
-    print("3. Penny Auction")
+    players = initilize_players()
+    still_playing = True
+    while still_playing:
+        print("Select which action you are interested in:")
+        print("1. Dutch Auction")
+        print("2. Vickrey Auction")
+        print("3. Penny Auction")
 
-    selection = int(input("press 1, 2 or 3 to select your auction type\n"))
-    total_winngins = {}
-    print("you have selected", selection)
-    if selection == 1:
-        dutch_auction(total_winngins)
-    if selection == 2:
-        vickrey_auction()
-    if selection == 3:
-        penny_auction() 
+        selection = int(input("press 1, 2 or 3 to select your auction type \n"))
 
-    print("Total winnings", total_winngins)
-    for item, winner in total_winngins.items():
-        print(f"{winner["winner"]} won a {item} for only {winner["price"]}")
+        if selection == 1:
+            players = dutch_auction(players)
+        if selection == 2:
+            players = vickrey_auction(players)
+        if selection == 3:
+            players = penny_auction(players)
+
+        response = input("Do you wish to continue playing?(y/n) \n")
+        if response != "y":
+            still_playing = False
+
+    print("Total winnings", players)
+
 
 
 if __name__ == "__main__":

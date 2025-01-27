@@ -23,12 +23,13 @@ def offer(duration):
     """
     start_time = time.time()
     while time.time() - start_time < duration:
-        if msvcrt.kbhit():
-            return msvcrt.getch()
+        key = msvcrt.kbhit()
+        if key:
+            return key
     return False
 
 
-def penny_auction():
+def penny_auction(players, items=["watch", "book", "chair"]):
     print(explanation)
     item = "throne"
     price = 1
@@ -60,6 +61,4 @@ def penny_auction():
     print("total debts")
     for player in players_debts:
         print(f"{player} owes {players_debts[player]} because they bid {players_debts[player]} times")
-
-
-penny_auction()
+    return

@@ -6,4 +6,6 @@ The inspiration for this project was twofold. One, I am interested in game mecha
 
 
 ### Hopes and Dreams
-have there be an option to have 1 to 4 players and randomly assign them some startingchash. At the end of each round the cash of each player should be printed.each item, before bidding begins has 3 appraisors who estimate the "true" value of an itemthey are off by unknown amounts, but each item does have a "true value" in that range... or something like that
+I need to add a check that players do not exceed their current money suply!
+
+each item, before bidding begins has 3 appraisors who estimate the "true" value of an itemthey are off by unknown amounts, but each item does have a "true value" in that range... or something like that
