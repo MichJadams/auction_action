@@ -1,5 +1,4 @@
-from collections import defaultdict
-import random
+from shared_functions import get_item
 explanation = """
 Also known as a second-price sealed-bid auction,
 participants submit written bids without knowing the bids of others.
@@ -7,9 +6,6 @@ The highest bidder wins, but the price paid is the second-highest bid.
 This auction type encourages bidders to bid their true value,
 as the winner pays less than their bid if they win.
 """
-
-def get_item(options):
-    return random.choice(options) if len(options) > 0 else ""
 
 def vickrey_auction(players, items=["watch", "book", "chair"]):
     print(explanation)

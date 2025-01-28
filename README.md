@@ -12,5 +12,6 @@ each item, before bidding begins has 3 appraisors who estimate the "true" value 
 
 1/28/2025 focus session
 - [x] Convert each auction to take in players object
-- [ ] Playtest
-- [ ] 
+- [ ] Cover case of no bids for all auctions
+- [ ] Don't allow players to bid more money than they have
+- [ ] Make an automated bidder with a simple strategy (enemy?) 

@@ -2,7 +2,6 @@ from auctions.dutch_auction import dutch_auction
 from auctions.penny_auction import penny_auction
 from auctions.vickrey_auction import vickrey_auction
 
-
 def initilize_players():
     number_of_players = int(input("How many players would like to submid a bid?\n"))
     players = []
