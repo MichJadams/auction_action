@@ -6,16 +6,23 @@ from auctions.vickrey_auction import vickrey_auction
 def initilize_players():
     number_of_players = int(input("How many players would like to submid a bid?\n"))
     players = []
+    hotkeys = ["1", "2", "3"]
     for player in range(number_of_players):
         print("---------------------------------------------------")
         name = input(f"Player {player}, please input your name.\n")
         starting_cash = 10
+        hotkey = hotkeys.pop(0) # TODO: add length check
         players.append({"name": name,
-                              "starting_cash": starting_cash,
-                              "current_cash": starting_cash,
-                              "items": []})
+                        "hotkey": hotkey,
+                        "starting_cash": starting_cash,
+                        "current_cash": starting_cash,
+                        "items": []})
         print(f"Welcome {name}! You have randomly been assigned a starting cash of {starting_cash}.")
+        print(f"Your hotkey to press when bidding is {hotkey}.")
+
     return players
+
+
 def main():
     players = initilize_players()
     still_playing = True
@@ -39,7 +46,6 @@ def main():
             still_playing = False
 
     print("Total winnings", players)
-
 
 
 if __name__ == "__main__":

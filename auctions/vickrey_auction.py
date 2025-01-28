@@ -1,5 +1,5 @@
 from collections import defaultdict
-
+import random
 explanation = """
 Also known as a second-price sealed-bid auction,
 participants submit written bids without knowing the bids of others.
@@ -7,21 +7,28 @@ The highest bidder wins, but the price paid is the second-highest bid.
 This auction type encourages bidders to bid their true value,
 as the winner pays less than their bid if they win.
 """
+
+def get_item(options):
+    return random.choice(options) if len(options) > 0 else ""
+
 def vickrey_auction(players, items=["watch", "book", "chair"]):
     print(explanation)
 
-    item = "picture"
+    item = get_item(items)
     bids = []
     print("private biding has begun")
-    for player in range(number_of_players):
+    for player in players:
         print("------------------------------------------------")
-        bid = int(input(f"Player {name}, please input your bid for a {item}\n"))
-        bids.append({"player": name, "bid": bid})
+        bid = int(input(f"Player {player["name"]}, please input your bid for a {item}\n"))
+        bids.append({"player": player, "bid": bid})
     bids.sort(key=sort_by_bid)
     winner = bids[-1]
     second = bids[-2]
-    
-    print(f"The winner is {winner["player"]} and while they bid {winner["bid"]} they will only have to pay the price of the second highest bidder, {second["player"]} who bid {second["bid"]}")
+    for player in players:
+        if player["name"] == winner["player"]["name"]:
+            player["items"].append(item)
+            player["current_cash"] -= second["bid"]
+    print(f"The winner is {winner["player"]["name"]} and while they bid {winner["bid"]} they will only have to pay the price of the second highest bidder, {second["player"]["name"]} who bid {second["bid"]}")
 
     return
 
